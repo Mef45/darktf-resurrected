@@ -40,6 +40,8 @@ x-release-please-end
 
 @var checkbox hideSidebarFooter "Скрыть блок ссылок внизу бокового меню" 0
 
+@var checkbox hideStat "Скрыть статистику просмотров" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -1907,6 +1909,12 @@ x-release-please-end
 
     .content .block-person .block-person__image {
       box-shadow: 0 0 0 1px rgba(theme-on-surface, idle-opacity);
+    }
+
+    if (hideStat) {
+      .post-counters {
+        display: none;
+      }
     }
 
     .post-counters .post-counters__item .post-counters__value {
