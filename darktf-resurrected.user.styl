@@ -24,6 +24,8 @@ x-release-please-end
 
 @var checkbox hidePopular "Скрыть «Популярное»" 0
 
+@var checkbox hideNew "Скрыть «Свежее»" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -1370,6 +1372,13 @@ x-release-please-end
     .sidebar-tree-list-item {
       if (hidePopular) {
         &:has(a[href='/popular']) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+
+      if (hideNew) {
+        &:has(a[href='/new']) {
           display: none;
           visibility: hidden;
         }
