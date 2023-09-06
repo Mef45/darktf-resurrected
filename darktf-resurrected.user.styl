@@ -42,6 +42,8 @@ x-release-please-end
 
 @var checkbox hideStat "Скрыть статистику просмотров" 0
 
+@var checkbox hideVacanciesWidget "Скрыть блок вакансий" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -2344,39 +2346,43 @@ x-release-please-end
   /* vacancies */
   /* ********* */
   .vacancies_widget {
-    background: rgba(theme-surface, high-emphasis-opacity);
+    if (hideVacanciesWidget) {
+      display: none;
+    } else {
+      background: rgba(theme-surface, high-emphasis-opacity);
 
-    .vacancies_widget__title {
-      border-bottom: thin solid transparent;
-      color: rgba(theme-secondary, high-emphasis-opacity);
+      .vacancies_widget__title {
+        border-bottom: thin solid transparent;
+        color: rgba(theme-secondary, high-emphasis-opacity);
 
-      &:hover {
-        border-bottom-color: currentColor;
-      }
-    }
-
-    .vacancies_widget__item {
-      &__company,
-      &__city,
-      &__salary {
-        color: rgba(theme-on-background, high-emphasis-opacity);
-      }
-
-      &__title,
-      &__company,
-      &__city {
         &:hover {
-          color: rgba(theme-secondary, high-emphasis-opacity);
+          border-bottom-color: currentColor;
         }
       }
-    }
 
-    &__load_more:hover {
-      color: rgba(theme-secondary, high-emphasis-opacity);
-    }
+      .vacancies_widget__item {
+        &__company,
+        &__city,
+        &__salary {
+          color: rgba(theme-on-background, high-emphasis-opacity);
+        }
 
-    &__all:hover {
-      color: rgba(theme-secondary, high-emphasis-opacity);
+        &__title,
+        &__company,
+        &__city {
+          &:hover {
+            color: rgba(theme-secondary, high-emphasis-opacity);
+          }
+        }
+      }
+
+      &__load_more:hover {
+        color: rgba(theme-secondary, high-emphasis-opacity);
+      }
+
+      &__all:hover {
+        color: rgba(theme-secondary, high-emphasis-opacity);
+      }
     }
   }
 
