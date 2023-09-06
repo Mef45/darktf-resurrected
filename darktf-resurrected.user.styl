@@ -38,6 +38,8 @@ x-release-please-end
 
 @var checkbox hideSubscription "Скрыть «Подписки»" 0
 
+@var checkbox hideSidebarFooter "Скрыть блок ссылок внизу бокового меню" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -1436,6 +1438,12 @@ x-release-please-end
           display: none;
           visibility: hidden;
         }
+      }
+    }
+
+    if (hideSidebarFooter) {
+      .sidebar__footer {
+        display: none;
       }
     }
   }
