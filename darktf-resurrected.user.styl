@@ -700,6 +700,13 @@ x-release-please-end
     }
   }
 
+  .ui-limited-input {
+    .input {
+      background: rgba(theme-surface, high-emphasis-opacity);
+      color: rgba(theme-on-surface, high-emphasis-opacity);
+    }
+  }
+
   /* ***** */
   /* lists */
   /* ***** */
@@ -831,7 +838,7 @@ x-release-please-end
   /* ******* */
   /* dialogs */
   /* ******* */
-  .v-popup-container {
+  .v-popup-container:not(.v-popup--zoomed-image) {
     .v-popup-window {
       .v-popup-window__content {
         background: rgba(theme-surface, high-emphasis-opacity);
@@ -846,7 +853,7 @@ x-release-please-end
           }
 
           &.v-popup-header--with-divider {
-            border-bottom-color: rgba(theme-primary, high-emphasis-opacity);
+            border-bottom-color: rgba(theme-on-surface, border-opacity);
           }
         }
 
@@ -1287,13 +1294,17 @@ x-release-please-end
     color: rgba(theme-secondary, high-emphasis-opacity) !important;
   }
 
-  .main .writing .writing__body .editor-content .gallery .upload-button {
-    background: red; /* rgba(theme-secondary, selected-opacity);*/
-    color: rgba(theme-secondary, high-emphasis-opacity);
-  }
+  .main .writing .writing__body .editor-content .gallery {
+    .upload-button {
+      background: rgba(theme-surface, high-emphasis-opacity);
+      color: rgba(theme-on-surface, high-emphasis-opacity);
 
-  .main .writing .writing__body .editor-content .gallery .upload-button:hover {
-    background: rgba(theme-secondary, idle-opacity);
+      highlightEffectOnActiveHover();
+
+      .upload-button__inner {
+        color: rgba(theme-primary, high-emphasis-opacity);
+      }
+    }
   }
 
   .main .writing .writing__body .editor-content .gallery .upload-button:hover .upload-button__inner {
