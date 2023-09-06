@@ -14,7 +14,7 @@ x-release-please-start-version
 @license        MIT
 x-release-please-end
 
-@var select scheme "Color scheme" {
+@var select scheme "Цветовая схема" {
   'DarkTF Resurrected': 'darktf-resurrected',
   'DarkTF Blue': 'darktf-blue',
   'DarkTF Gold': 'darktf-gold',
@@ -22,9 +22,11 @@ x-release-please-end
   'PornTF': 'porntf'
 }
 
-@var checkbox rounded-corners "Enable rounded corners for highlighted comments" 0
+@var checkbox hidePopular "Скрыть «Популярное»" 0
 
-@var checkbox blur-spoilers "Blur Spoilers" 0
+@var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
+
+@var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
 
 @var checkbox experimental "Enable experimental features" 0
 
@@ -1365,7 +1367,14 @@ x-release-please-end
   }
 
   .sidebar {
-    /* border-right: thin solid rgba(theme-primary, border-opacity);*/
+    .sidebar-tree-list-item {
+      if (hidePopular) {
+        &:has(a[href='/popular']) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+    }
   }
 
   .sidebar .sidebar-tree-list .sidebar-tree-list-item,
@@ -1680,7 +1689,7 @@ x-release-please-end
     }
 
     .content .block-hidden {
-      if (blur-spoilers) {
+      if (blurredSpoilers) {
         backdrop-filter: blur(18px) grayscale(60%) contrast(60%) brightness(32%);
         background-color: rgba(theme-surface, disabled-opacity);
         border-radius: unset;
@@ -1690,7 +1699,7 @@ x-release-please-end
       }
 
       &.block-hidden--low {
-        if (blur-spoilers) {
+        if (blurredSpoilers) {
           backdrop-filter: blur(6px);
         }
       }
@@ -2026,7 +2035,7 @@ x-release-please-end
         &.comment--new {
           --background-color: darken(rgba(theme-surface, high-emphasis-opacity), hover-opacity * 100);
 
-          if (rounded-corners) {
+          if (roundedCorners) {
             &:not(.comment--new + .comment--new):has(+ .comment) {
               & .comment__branches::before {
                 border-top-left-radius: 8px;
@@ -2059,7 +2068,7 @@ x-release-please-end
           }
         }
 
-        if (rounded-corners) {
+        if (roundedCorners) {
           &.comment--highlighted {
             .comment__branches::before,
             .comment__content::before {
