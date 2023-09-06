@@ -36,6 +36,8 @@ x-release-please-end
 
 @var checkbox hideRating "Скрыть «Рейтинг»" 0
 
+@var checkbox hideSubscription "Скрыть «Подписки»" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -1424,6 +1426,13 @@ x-release-please-end
 
       if (hideRating) {
         &:has(a[href='/rating']) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+
+      if (hideSubscription) {
+        &:has(a[href='/subs']) {
           display: none;
           visibility: hidden;
         }
