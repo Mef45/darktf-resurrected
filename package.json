@@ -1,0 +1,32 @@
+{
+  "name": "darktf-resurrected",
+  "version": "2.1.34",
+  "description": "Dark theme implementation for DTF.ru with customization",
+  "author": "Mef45, Neko Natum, Pegasus Plus",
+  "license": "MIT",
+  "private": "true",
+  "keywords": [
+    "dark-theme",
+    "dtf-dark-theme",
+    "stylus-theme",
+    "stylus",
+    "userstyle",
+    "userstyles-dark-theme"
+  ],
+  "homepage": "https://github.com/Mef45/darktf-resurrected#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mef45/darktf-resurrected.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Mef45/darktf-resurrected/issues"
+  },
+  "scripts": {
+    "lint": "stylelint \"**/*.styl\"",
+    "lint:fix": "stylelint --fix \"**/*.styl\""
+  },
+  "devDependencies": {
+    "stylelint": "^15.10.3",
+    "stylelint-stylus": "^0.18.0"
+  }
+}

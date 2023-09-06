@@ -1,0 +1,16 @@
+{
+  "plugins": ["stylelint-stylus"],
+  "extends": [
+    "stylelint-stylus/standard"
+  ],
+  "rules": {
+    "stylus/block-closing-brace-newline-after": null,
+    "stylus/declaration-colon": "always",
+    "stylus/media-feature-colon": "always",
+    "stylus/pythonic": "never",
+    "stylus/selector-list-comma": "always",
+    "stylus/selector-type-no-unknown": null,
+    "stylus/semicolon": "always",
+    "stylus/single-line-comment": "never"
+  }
+}

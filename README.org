@@ -1,0 +1,39 @@
+#+STARTUP: nofold
+#+HTML: <div align="center">
+
+* DarkTF Resurrected
+
+Dark theme implementation for [[https://dtf.ru][DTF.ru]] with customization.
+
+[[https://github.com/mef45/darktf-resurrected/blob/master/CHANGELOG.md][https://img.shields.io/github/v/tag/mef45/darktf-resurrected.svg?label=version&style=for-the-badge]]
+[[https://raw.githubusercontent.com/mef45/darktf-resurrected/master/darktf-resurrected.user.styl][https://img.shields.io/badge/Install%20directly%20with-Stylus-cyan.svg?style=for-the-badge]]
+
+#+HTML: <img src="https://github.com/Mef45/darktf-resurrected/assets/26562037/5c722459-5894-4bf3-9abc-f66b746bac1d" width="100%"/>
+
+#+HTML: </div>
+
+** Installation Guide
+
+*** Step 1: Install Stylus Browser Extension
+First, you'll need to install the Stylus extension for your browser:
+
+For Google Chrome, install from the [[https://chrome.google.com/webstore/detail/stylus/clngdbkpkpeebahjckkjfobafhncgmne][Chrome Web Store]]
+
+For Mozilla Firefox, install from the [[https://addons.mozilla.org/en-US/firefox/addon/styl-us/][Firefox Add-ons]]
+
+*** Step 2: Install the userstyle You can install the userstyle either by using a direct link or by browsing and searching for it on UserStyles.world.
+
+**** Option A: Direct link
+
+1. Click on the [[https://raw.githubusercontent.com/mef45/darktf-resurrected/master/darktf-resurrected.user.styl][direct link]] to the userstyle.
+
+2. Stylus extension should open the installation page.
+
+3. Click on "Install style" button.
+
+**** Option B: UserStyles.world
+1. Go to [[https://userstyles.world/style/11925/darktf-resurrected][UserStyles.world]].
+
+2. On the userstyle page, click on "Install" button.
+
+The userstyle should now be installed and applied to the specified websites. You can manage, disable, or remove userstyles through the Stylus browser extension.
