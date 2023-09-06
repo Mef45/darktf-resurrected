@@ -46,6 +46,8 @@ x-release-please-end
 
 @var checkbox hideRecommendationFeed "Скрыть блок рекомендаций внизу страницы" 0
 
+@var checkbox automaticallyExpandCommentsBlock "Автоматически разворачивать комментарии" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -2264,6 +2266,17 @@ x-release-please-end
               }
             }
           }
+        }
+      }
+
+      if (automaticallyExpandCommentsBlock) {
+        .comments__content_wrapper__container {
+          height: auto !important;
+        }
+
+        .comments__content_wrapper__button {
+          display: none;
+          visibility: hidden;
         }
       }
 
