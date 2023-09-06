@@ -48,6 +48,10 @@ x-release-please-end
 
 @var checkbox automaticallyExpandCommentsBlock "Автоматически разворачивать комментарии" 0
 
+@var checkbox hideSubsitePlusBadges "Скрыть иконку плюса возле ника" 0
+
+@var checkbox hideSubsiteVerificationBadges "Скрыть иконку верификации возле ника" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -3137,6 +3141,26 @@ x-release-please-end
         &:hover {
           color: rgba(theme-primary, high-emphasis-opacity);
         }
+      }
+    }
+  }
+
+  /* ******************* */
+  /* plus/verified icons */
+  /* ******************* */
+  .layout-badge,
+  .subsite-badge {
+    if (hideSubsitePlusBadges) {
+      &--plus {
+        display: none;
+        visibility: hidden;
+      }
+    }
+
+    if (hideSubsiteVerificationBadges) {
+      &--verified {
+        display: none;
+        visibility: hidden;
       }
     }
   }
