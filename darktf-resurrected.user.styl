@@ -28,6 +28,8 @@ x-release-please-end
 
 @var checkbox hideMyFeed "Скрыть «Моя лента»" 0
 
+@var checkbox hideUnreadIcon "Скрыть индикатор новых постов в «Моей ленте»" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -1388,6 +1390,13 @@ x-release-please-end
 
       if (hideMyFeed) {
         &:has(a[href='/my/new']) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+
+      if (hideUnreadIcon) {
+        .sidebar-tree-list-item__unread {
           display: none;
           visibility: hidden;
         }
