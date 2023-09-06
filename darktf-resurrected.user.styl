@@ -26,6 +26,8 @@ x-release-please-end
 
 @var checkbox hideNew "Скрыть «Свежее»" 0
 
+@var checkbox hideMyFeed "Скрыть «Моя лента»" 0
+
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox blurredSpoilers "Использовать блюр вместо сплошного цвета в спойлерах" 0
@@ -1379,6 +1381,13 @@ x-release-please-end
 
       if (hideNew) {
         &:has(a[href='/new']) {
+          display: none;
+          visibility: hidden;
+        }
+      }
+
+      if (hideMyFeed) {
+        &:has(a[href='/my/new']) {
           display: none;
           visibility: hidden;
         }
