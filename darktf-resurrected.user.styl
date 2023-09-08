@@ -22,23 +22,7 @@ x-release-please-end
   'PornTF': 'porntf'
 }
 
-@var checkbox hidePopular "Скрыть «Популярное»" 0
-
-@var checkbox hideNew "Скрыть «Свежее»" 0
-
-@var checkbox hideMyFeed "Скрыть «Моя лента»" 0
-
-@var checkbox hideUnreadIcon "Скрыть индикатор новых постов в «Моей ленте»" 0
-
-@var checkbox hideBookmarks "Скрыть «Закладки»" 0
-
 @var checkbox hideVacancies "Скрыть «Вакансии»" 0
-
-@var checkbox hideRating "Скрыть «Рейтинг»" 0
-
-@var checkbox hideSubscription "Скрыть «Подписки»" 0
-
-@var checkbox hideSidebarFooter "Скрыть блок ссылок внизу бокового меню" 0
 
 @var checkbox hideStat "Скрыть статистику просмотров" 0
 
@@ -86,6 +70,34 @@ x-release-please-end
     }
   }
 
+  highlightEffectOnHover(rel = true) {
+    /* Adds a ::before element to a DOM element and applies a highlight effect when hovered. */
+    if (rel) {
+      position: relative;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: currentColor;
+      border-radius: inherit;
+      opacity: 0;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:hover::before {
+      opacity: hover-opacity * theme-background-overlay-multiplier;
+    }
+  }
+
   highlightEffectOnActiveHover(rel = true) {
     /* Adds a ::before element to a DOM element, which is in an active state, and applies a highlight effect when hovered. */
     if (rel) {
@@ -114,34 +126,6 @@ x-release-please-end
     }
   }
 
-  highlightEffectOnHover(rel = true) {
-    /* Adds a ::before element to a DOM element and applies a highlight effect when hovered. */
-    if (rel) {
-      position: relative;
-    }
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: currentColor;
-      border-radius: inherit;
-      opacity: 0;
-    }
-
-    &:hover {
-      opacity: 1;
-    }
-
-    &:hover::before {
-      opacity: hover-opacity;
-    }
-  }
-
   getColorFilterValueBySelectedTheme() {
     if (scheme == 'darktf-resurrected') {
       invert(98%) sepia(4%) saturate(2734%) hue-rotate(323deg) brightness(106%) contrast(99%);
@@ -167,6 +151,8 @@ x-release-please-end
     theme-notifies-link-color-hover = darken(theme-secondary, 5);
     theme-twitch = #9b51e0;
     theme-youtube = #eb5757;
+
+    theme-background-overlay-multiplier = 1;
   }
 
   if (scheme == darktf-blue) {
@@ -180,6 +166,8 @@ x-release-please-end
     theme-notifies-link-color-hover = darken(theme-secondary, 5);
     theme-twitch = #9b51e0;
     theme-youtube = #eb5757;
+
+    theme-background-overlay-multiplier = 1;
   }
 
   if (scheme == darktf-gold) {
@@ -193,6 +181,8 @@ x-release-please-end
     theme-notifies-link-color-hover = darken(theme-secondary, 5);
     theme-twitch = #9b51e0;
     theme-youtube = #eb5757;
+
+    theme-background-overlay-multiplier = 1;
   }
 
   if (scheme == darkertf) {
@@ -206,6 +196,8 @@ x-release-please-end
     theme-notifies-link-color-hover = darken(theme-secondary, 5);
     theme-twitch = #9b51e0;
     theme-youtube = #eb5757;
+
+    theme-background-overlay-multiplier = 2;
   }
 
   if (scheme == porntf) {
@@ -219,6 +211,8 @@ x-release-please-end
     theme-notifies-link-color-hover = lighten(theme-secondary, 10);
     theme-twitch = #9b51e0;
     theme-youtube = #eb5757;
+
+    theme-background-overlay-multiplier = 2;
   }
 
   border-opacity = 0.12;
@@ -1626,154 +1620,125 @@ x-release-please-end
   /* ******* */
   /* sidebar */
   /* ******* */
-  .sidebar .sidebar__footer::before {
-    display: none;
-  }
-
-  .sidebar,
-  .sidebar .sidebar__footer {
-    background: rgba(theme-background, high-emphasis-opacity);
-  }
-
   .sidebar {
-    .sidebar-tree-list-item {
-      if (hidePopular) {
-        &:has(a[href='/popular']) {
-          display: none;
-          visibility: hidden;
+    background: rgba(theme-background, high-emphasis-opacity);
+
+    .sidebar-tree-list {
+      .sidebar-tree-list-item {
+        color: rgba(theme-on-background, high-emphasis-opacity);
+
+        &:not(.sidebar-tree-list-item--hover-disabled):not(.sidebar-tree-list-item--active) {
+          highlightEffectOnHover();
+
+          &:hover {
+            background: rgba(theme-background, high-emphasis-opacity);
+            color: rgba(theme-primary, high-emphasis-opacity);
+
+            svg {
+              color: rgba(theme-primary, high-emphasis-opacity);
+            }
+          }
+        }
+
+        &__icon {
+          color: rgba(theme-on-background, high-emphasis-opacity);
+        }
+
+        &__unread {
+          background: rgba(theme-primary, high-emphasis-opacity);
+        }
+
+        &__favourite {
+          color: rgba(theme-primary, high-emphasis-opacity);
+        }
+
+        &--active {
+          background: rgba(theme-background, high-emphasis-opacity);
+          color: rgba(theme-primary, high-emphasis-opacity);
+
+          highlightEffectOnActiveHover();
+
+          &:not(.sidebar-tree-list-item--with-active-child) {
+            .sidebar-tree-list-item__icon {
+              color: rgba(theme-primary, high-emphasis-opacity);
+            }
+          }
+        }
+
+        if (hideVacancies) {
+          &:has(a[href='https://vc.ru/job']) {
+            display: none;
+            visibility: hidden;
+          }
         }
       }
 
-      if (hideNew) {
-        &:has(a[href='/new']) {
-          display: none;
-          visibility: hidden;
-        }
-      }
+      &__show-more-button {
+        background: transparent;
+        border-radius: 8px;
+        color: rgba(theme-on-background, high-emphasis-opacity);
 
-      if (hideMyFeed) {
-        &:has(a[href='/my/new']) {
-          display: none;
-          visibility: hidden;
-        }
-      }
+        &:hover {
+          color: rgba(theme-primary, high-emphasis-opacity);
 
-      if (hideUnreadIcon) {
-        .sidebar-tree-list-item__unread {
-          display: none;
-          visibility: hidden;
-        }
-      }
-
-      if (hideBookmarks) {
-        &:has(a[href='/bookmarks']) {
-          display: none;
-          visibility: hidden;
-        }
-      }
-
-      if (hideVacancies) {
-        &:has(a[href='https://vc.ru/job']) {
-          display: none;
-          visibility: hidden;
-        }
-      }
-
-      if (hideRating) {
-        &:has(a[href='/rating']) {
-          display: none;
-          visibility: hidden;
-        }
-      }
-
-      if (hideSubscription) {
-        &:has(a[href='/subs']) {
-          display: none;
-          visibility: hidden;
+          highlightEffectOnHover();
         }
       }
     }
 
-    if (hideSidebarFooter) {
-      .sidebar__footer {
-        display: none;
-      }
-    }
-  }
-
-  .sidebar .sidebar-tree-list .sidebar-tree-list-item,
-  .sidebar .sidebar-tree-list .sidebar-tree-list-item__icon,
-  .sidebar .sidebar-tree-list .sidebar-tree-list__show-more-button,
-  .sidebar .sidebar__footer__container .sidebar__footer__item,
-  .sidebar .sidebar__footer__container .sidebar__footer__icons .sidebar__footer__icon {
-    color: rgba(theme-on-background, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar-tree-list-item__unread {
-    background: rgba(theme-primary, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar-tree-list .sidebar-tree-list-item--active,
-  .sidebar .sidebar-tree-list .sidebar-tree-list-item--active:not(.sidebar-tree-list-item--with-active-child) .sidebar-tree-list-item__icon {
-    background: rgba(theme-primary, high-emphasis-opacity);
-    color: rgba(theme-on-primary, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar-tree-list .sidebar-tree-list-item:not(.sidebar-tree-list-item--hover-disabled):not(.sidebar-tree-list-item--active) {
-    highlightEffectOnHover();
-
-    &:hover {
+    .sidebar__footer {
       background: rgba(theme-background, high-emphasis-opacity);
+
+      &::before {
+        background-image: linear-gradient(0deg, rgba(theme-background, high-emphasis-opacity) 0%, rgba(0, 0, 0, 0) 100%);
+      }
+
+      .sidebar__footer__container {
+        .sidebar__footer__item {
+          color: rgba(theme-on-background, high-emphasis-opacity);
+
+          &:hover {
+            color: rgba(theme-secondary, high-emphasis-opacity);
+          }
+
+          &--sponsor span {
+            background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 100%), linear-gradient(90deg, rgba(theme-secondary, high-emphasis-opacity) 25%, darken(rgba(theme-secondary, high-emphasis-opacity), 20) 100%);
+            border-bottom: thin solid transparent;
+            color: rgba(theme-secondary, high-emphasis-opacity);
+
+            &:hover {
+              border-bottom-color: currentColor;
+            }
+          }
+        }
+
+        .sidebar__footer__icons {
+          .sidebar__footer__icon {
+            color: rgba(theme-on-background, high-emphasis-opacity);
+
+            &:hover {
+              color: lighten(theme-on-background, 10);
+            }
+
+            &--twitch {
+              color: rgba(theme-twitch, high-emphasis-opacity);
+
+              &:hover {
+                color: lighten(rgba(theme-twitch, high-emphasis-opacity), 10);
+              }
+            }
+
+            &--youtube {
+              color: rgba(theme-youtube, high-emphasis-opacity);
+
+              &:hover {
+                color: lighten(rgba(theme-youtube, high-emphasis-opacity), 10);
+              }
+            }
+          }
+        }
+      }
     }
-  }
-
-  .sidebar .sidebar-tree-list .sidebar-tree-list-item:hover:not(.sidebar-tree-list-item--active),
-  .sidebar .sidebar-tree-list .sidebar-tree-list-item:hover:not(.sidebar-tree-list-item--active) svg {
-    color: rgba(theme-primary, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar-tree-list__show-more-button {
-    background: transparent;
-    border-radius: 8px;
-  }
-
-  .sidebar .sidebar-tree-list__show-more-button:hover {
-    background: rgba(theme-on-background, hover-opacity);
-    color: rgba(theme-primary, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar__footer .sidebar__footer__container .sidebar__footer__item:hover {
-    color: rgba(theme-secondary, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar__footer .sidebar__footer__container .sidebar__footer__item.sidebar__footer__item--sponsor span {
-    background-image: linear-gradient(90deg, rgba(255, 255, 255, 1) 25%, rgba(255, 255, 255, 1) 100%), linear-gradient(90deg, rgba(theme-secondary, high-emphasis-opacity) 25%, darken(rgba(theme-secondary, high-emphasis-opacity), 20) 100%);
-    border-bottom: thin solid transparent;
-    color: rgba(theme-secondary, high-emphasis-opacity);
-
-    &:hover {
-      border-bottom-color: currentColor;
-    }
-  }
-
-  .sidebar .sidebar__footer .sidebar__footer__container .sidebar__footer__icons .sidebar__footer__icon:hover {
-    color: lighten(theme-on-background, 10);
-  }
-
-  .sidebar .sidebar__footer .sidebar__footer__container .sidebar__footer__icons .sidebar__footer__icon.sidebar__footer__icon--twitch {
-    color: rgba(theme-twitch, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar__footer .sidebar__footer__container .sidebar__footer__icons .sidebar__footer__icon.sidebar__footer__icon--twitch:hover {
-    color: lighten(rgba(theme-twitch), 10, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar__footer .sidebar__footer__container .sidebar__footer__icons .sidebar__footer__icon.sidebar__footer__icon--youtube {
-    color: rgba(theme-youtube, high-emphasis-opacity);
-  }
-
-  .sidebar .sidebar__footer .sidebar__footer__container .sidebar__footer__icons .sidebar__footer__icon.sidebar__footer__icon--youtube:hover {
-    color: lighten(rgba(theme-youtube), 10, high-emphasis-opacity);
   }
 
   /* **** */
