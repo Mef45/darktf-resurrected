@@ -34,8 +34,6 @@ x-release-please-end
 
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
-@var checkbox experimental "Enable experimental features" 0
-
 ==/UserStyle== */
 @-moz-document url-prefix("https://dtf.ru/") {
   /* ****** */
@@ -3444,48 +3442,6 @@ x-release-please-end
         &:hover {
           color: rgba(theme-primary, high-emphasis-opacity);
         }
-      }
-    }
-  }
-
-  /* ******************* */
-  /* plus/verified icons */
-  /* ******************* */
-  .layout-badge,
-  .subsite-badge {
-  }
-
-  /* ********************* */
-  /* experimental features */
-  /* ********************* */
-  if (experimental) {
-    layout-max-width = 1280px;
-    layout-left-width = 220px;
-    layout-content-width = 640px;
-    layout-right-width = 320px;
-
-    .main,
-    .main.layout {
-      display: grid;
-      grid-template-columns: layout-left-width minmax(0, layout-content-width) layout-right-width;
-      justify-content: space-between;
-      margin-left: auto;
-      margin-right: auto;
-      max-width: layout-max-width;
-      width: 100%;
-    }
-
-    @media (min-width: 640px) and (max-width: 1559px) {
-      .app--content-entry.app--left-column-on.app--right-column-on .l-island-a,
-      .app--content-entry.app--left-column-on.app--right-column-on .l-island-b {
-        width: 550px;
-      }
-    }
-
-    @media (min-width: 1560px) {
-      .app--content-entry.app--left-column-on.app--right-column-on .l-island-a,
-      .app--content-entry.app--left-column-on.app--right-column-on .l-island-b {
-        width: 590px;
       }
     }
   }
