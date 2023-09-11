@@ -32,10 +32,6 @@ x-release-please-end
 
 @var checkbox automaticallyExpandCommentsBlock "Автоматически разворачивать комментарии" 0
 
-@var checkbox hideSubsitePlusBadges "Скрыть иконку плюса возле ника" 0
-
-@var checkbox hideSubsiteVerificationBadges "Скрыть иконку верификации возле ника" 0
-
 @var checkbox roundedCorners "Скругленные углы у подсвеченных комментариев" 0
 
 @var checkbox experimental "Enable experimental features" 0
@@ -3457,19 +3453,6 @@ x-release-please-end
   /* ******************* */
   .layout-badge,
   .subsite-badge {
-    if (hideSubsitePlusBadges) {
-      &--plus {
-        display: none;
-        visibility: hidden;
-      }
-    }
-
-    if (hideSubsiteVerificationBadges) {
-      &--verified {
-        display: none;
-        visibility: hidden;
-      }
-    }
   }
 
   /* ********************* */
