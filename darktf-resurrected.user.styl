@@ -799,6 +799,30 @@ x-release-please-end
     }
   }
 
+  /* ******* */
+  /* islands */
+  /* ******* */
+  .v-island {
+    .v-island__header {
+      .v-island__counter {
+        color: rgba(theme-on-surface, medium-emphasis-opacity);
+      }
+    }
+
+    .v-island__grayed {
+      color: rgba(theme-on-surface, medium-emphasis-opacity);
+    }
+
+    .t-link-inline {
+      border-bottom: thin solid transparent;
+      color: rgba(theme-secondary, high-emphasis-opacity);
+
+      &:hover {
+        border-bottom-color: currentColor;
+      }
+    }
+  }
+
   /* ******** */
   /* popovers */
   /* ******** */
@@ -1860,14 +1884,6 @@ x-release-please-end
         color: rgba(theme-on-surface, high-emphasis-opacity);
 
         highlightEffectOnHover();
-      }
-    }
-
-    .subsite-sidebar {
-      .v-island__header {
-        .v-island__counter {
-          color: rgba(theme-on-surface, medium-emphasis-opacity);
-        }
       }
     }
 
