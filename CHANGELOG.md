@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.2.0](https://github.com/Mef45/darktf-resurrected/compare/v3.1.0...v3.2.0) (2023-09-28)
+
+
+### Features
+
+* implement logo replacement when selecting porntf theme ([6457276](https://github.com/Mef45/darktf-resurrected/commit/64572763ddf73e7c826c8ddfb7cd92471eef4289))
+* remove option to hide icons near username ([24de324](https://github.com/Mef45/darktf-resurrected/commit/24de324fe5abb83cb2177422d7a22763993adf6a))
+* remove the ability to enable blurred spoilers and rework existing styles for feed and post ([efc618b](https://github.com/Mef45/darktf-resurrected/commit/efc618b942977cb78acebcd7d36a510e903a6f13))
+* rework existing styles for article editor and add missing ones ([7f40580](https://github.com/Mef45/darktf-resurrected/commit/7f405805e174c006378e78de45acdc999ee4de93))
+* rework existing styles for news widget ([0e782c4](https://github.com/Mef45/darktf-resurrected/commit/0e782c4a58b07ae8f6a50855ebe8a9f76932cb97))
+* rework existing styles for sidebar, change active element color, and remove useless settings ([f7f3632](https://github.com/Mef45/darktf-resurrected/commit/f7f3632fcc48ed6ddb95e92ffdad2595a7f7228e))
+
+
+### Bug Fixes
+
+* change link colors in the floating ad block ([e497336](https://github.com/Mef45/darktf-resurrected/commit/e497336d911000fc18491185ae01861743d04417))
+* fix shading of running line in audio player ([4798764](https://github.com/Mef45/darktf-resurrected/commit/479876419e02324ab5f0f3dc0668dba949d210d8))
+* fix styles for empty subsite sidebar ([4d4c28c](https://github.com/Mef45/darktf-resurrected/commit/4d4c28ccba8007e428ad5220a35dce31913c4a75))
+
 ## [3.1.0](https://github.com/Mef45/darktf-resurrected/compare/v3.0.0...v3.1.0) (2023-09-06)
 
 
